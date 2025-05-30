@@ -1,0 +1,44 @@
+
+{
+  "name": "ConverterPro - Universal Unit Converter",
+  "short_name": "ConverterPro",
+  "description": "Convert between 200+ units across 17 categories with real-time currency rates",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e3a8a",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity", "education"],
+  "shortcuts": [
+    {
+      "name": "Length Converter",
+      "short_name": "Length",
+      "description": "Convert length units",
+      "url": "/?category=length",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Currency Converter",
+      "short_name": "Currency",
+      "description": "Convert currencies with real-time rates",
+      "url": "/?category=currency",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
