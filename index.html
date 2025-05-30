@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ConverterPro - Universal Unit Converter | Convert Any Unit Instantly</title>
+
+    <!-- SEO Meta Tags -->
     <meta name="description" content="ConverterPro by BKND Groups - Convert between 200+ units across 17 categories including area, length, weight, temperature, currency and more. Fast, accurate, and free online converter with real-time exchange rates." />
     <meta name="keywords" content="unit converter, metric converter, length converter, weight converter, temperature converter, currency converter, area converter, volume converter, converterpro" />
     <meta name="author" content="BKND Groups" />
@@ -25,67 +26,71 @@
 
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "ConverterPro",
-      "description": "Universal unit converter supporting 200+ units across 17 categories including area, length, weight, temperature, and currency with real-time exchange rates",
-      "url": "https://converterpro.online",
-      "applicationCategory": "Utility",
-      "operatingSystem": "Web Browser",
-      "creator": {
-        "@type": "Organization",
-        "name": "BKND Groups",
-        "email": "kamaleshkumarbalamurugan@gmail.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "featureList": [
-        "Area conversion",
-        "Length conversion", 
-        "Weight conversion",
-        "Temperature conversion",
-        "Currency conversion",
-        "Volume conversion",
-        "Time conversion",
-        "Speed conversion",
-        "Digital storage conversion",
-        "Energy conversion",
-        "Pressure conversion",
-        "Power conversion",
-        "Density conversion",
-        "Fuel consumption conversion",
-        "Data transfer conversion",
-        "Angle conversion",
-        "Height conversion"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ConverterPro",
+        "description": "Universal unit converter supporting 200+ units across 17 categories including area, length, weight, temperature, and currency with real-time exchange rates",
+        "url": "https://converterpro.online",
+        "applicationCategory": "Utility",
+        "operatingSystem": "Web Browser",
+        "creator": {
+          "@type": "Organization",
+          "name": "BKND Groups",
+          "email": "kamaleshkumarbalamurugan@gmail.com"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Area conversion",
+          "Length conversion",
+          "Weight conversion",
+          "Temperature conversion",
+          "Currency conversion",
+          "Volume conversion",
+          "Time conversion",
+          "Speed conversion",
+          "Digital storage conversion",
+          "Energy conversion",
+          "Pressure conversion",
+          "Power conversion",
+          "Density conversion",
+          "Fuel consumption conversion",
+          "Data transfer conversion",
+          "Angle conversion",
+          "Height conversion"
+        ]
+      }
     </script>
 
     <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://api.exchangerate-api.com">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.exchangerate-api.com" />
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#2563eb">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- PWA & Favicons -->
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+    <!-- Preload Main Script for Performance -->
+    <link rel="modulepreload" href="./src/main.jsx" />
   </head>
 
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+
+    <!-- GPT Embed (do not remove) -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Main App Entry -->
+    <script type="module" src="./src/main.jsx"></script>
   </body>
 </html>
