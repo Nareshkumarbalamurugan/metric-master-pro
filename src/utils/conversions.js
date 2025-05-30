@@ -1,3 +1,4 @@
+import { fetchExchangeRates, getCachedRates } from './currencyApi';
 
 export const conversions = {
   area: {
@@ -232,20 +233,22 @@ export const conversions = {
       { key: 'jpy', name: 'Japanese Yen', symbol: 'JPY' },
       { key: 'aud', name: 'Australian Dollar', symbol: 'AUD' },
       { key: 'cad', name: 'Canadian Dollar', symbol: 'CAD' },
-      { key: 'chf', name: 'Swiss Franc', symbol: 'CHF' }
+      { key: 'chf', name: 'Swiss Franc', symbol: 'CHF' },
+      { key: 'cny', name: 'Chinese Yuan', symbol: 'CNY' },
+      { key: 'krw', name: 'South Korean Won', symbol: 'KRW' },
+      { key: 'sgd', name: 'Singapore Dollar', symbol: 'SGD' },
+      { key: 'hkd', name: 'Hong Kong Dollar', symbol: 'HKD' },
+      { key: 'nzd', name: 'New Zealand Dollar', symbol: 'NZD' },
+      { key: 'sek', name: 'Swedish Krona', symbol: 'SEK' },
+      { key: 'nok', name: 'Norwegian Krone', symbol: 'NOK' },
+      { key: 'dkk', name: 'Danish Krone', symbol: 'DKK' },
+      { key: 'pln', name: 'Polish Zloty', symbol: 'PLN' },
+      { key: 'czk', name: 'Czech Koruna', symbol: 'CZK' },
+      { key: 'huf', name: 'Hungarian Forint', symbol: 'HUF' },
+      { key: 'rub', name: 'Russian Ruble', symbol: 'RUB' }
     ],
     convert: (value, from, to) => {
-      // Mock exchange rates (in a real app, you'd fetch from an API)
-      const rates = {
-        usd: 1,
-        eur: 0.85,
-        inr: 83.12,
-        gbp: 0.73,
-        jpy: 149.5,
-        aud: 1.52,
-        cad: 1.36,
-        chf: 0.88
-      };
+      const rates = getCachedRates();
       return (value / rates[from]) * rates[to];
     }
   },
@@ -420,3 +423,6 @@ export const conversions = {
     }
   }
 };
+
+// Initialize currency rates on app load
+fetchExchangeRates();

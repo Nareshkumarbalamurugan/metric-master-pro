@@ -4,20 +4,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Universal Unit Converter - Convert Any Unit Instantly</title>
-    <meta name="description" content="Universal Unit Converter - Convert between 200+ units across 17 categories including area, length, weight, temperature, currency and more. Fast, accurate, and free online converter." />
-    <meta name="keywords" content="unit converter, metric converter, length converter, weight converter, temperature converter, currency converter, area converter, volume converter" />
-    <meta name="author" content="Universal Converter" />
+    <title>ConverterPro - Universal Unit Converter | Convert Any Unit Instantly</title>
+    <meta name="description" content="ConverterPro by BKND Groups - Convert between 200+ units across 17 categories including area, length, weight, temperature, currency and more. Fast, accurate, and free online converter with real-time exchange rates." />
+    <meta name="keywords" content="unit converter, metric converter, length converter, weight converter, temperature converter, currency converter, area converter, volume converter, converterpro" />
+    <meta name="author" content="BKND Groups" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://converterpro.online/" />
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Universal Unit Converter - Convert Any Unit Instantly" />
-    <meta property="og:description" content="Convert between 200+ units across 17 categories. Fast, accurate, and completely free online unit converter." />
+    <meta property="og:title" content="ConverterPro - Universal Unit Converter" />
+    <meta property="og:description" content="Convert between 200+ units across 17 categories. Fast, accurate, and completely free online unit converter with real-time currency rates." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://universalconverter.com" />
+    <meta property="og:url" content="https://converterpro.online" />
+    <meta property="og:site_name" content="ConverterPro" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Universal Unit Converter" />
+    <meta name="twitter:title" content="ConverterPro - Universal Unit Converter" />
     <meta name="twitter:description" content="Convert between 200+ units across 17 categories instantly" />
 
     <!-- Structured Data for SEO -->
@@ -25,31 +28,64 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Universal Unit Converter",
-      "description": "Convert between 200+ units across 17 categories including area, length, weight, temperature, and more",
-      "url": "https://universalconverter.com",
+      "name": "ConverterPro",
+      "description": "Universal unit converter supporting 200+ units across 17 categories including area, length, weight, temperature, and currency with real-time exchange rates",
+      "url": "https://converterpro.online",
       "applicationCategory": "Utility",
       "operatingSystem": "Web Browser",
+      "creator": {
+        "@type": "Organization",
+        "name": "BKND Groups",
+        "email": "kamaleshkumarbalamurugan@gmail.com"
+      },
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
-      }
+      },
+      "featureList": [
+        "Area conversion",
+        "Length conversion", 
+        "Weight conversion",
+        "Temperature conversion",
+        "Currency conversion",
+        "Volume conversion",
+        "Time conversion",
+        "Speed conversion",
+        "Digital storage conversion",
+        "Energy conversion",
+        "Pressure conversion",
+        "Power conversion",
+        "Density conversion",
+        "Fuel consumption conversion",
+        "Data transfer conversion",
+        "Angle conversion",
+        "Height conversion"
+      ]
     }
     </script>
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.exchangerate-api.com">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   </head>
 
   <body>
     <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
