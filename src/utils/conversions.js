@@ -1,4 +1,5 @@
 import { fetchExchangeRates, getCachedRates } from './currencyApi';
+import { fetchGoldRates, getCachedGoldRates } from './goldApi';
 
 export const conversions = {
   area: {
@@ -421,8 +422,49 @@ export const conversions = {
       };
       return (value * toCm[from]) / toCm[to];
     }
+  },
+
+  gold: {
+    units: [
+      { key: 'oz_usd', name: 'Ounce (USD)', symbol: 'oz USD' },
+      { key: 'gram_inr', name: '10 Grams (INR)', symbol: '10g INR' },
+      { key: 'oz_eur', name: 'Ounce (EUR)', symbol: 'oz EUR' },
+      { key: 'oz_gbp', name: 'Ounce (GBP)', symbol: 'oz GBP' },
+      { key: 'oz_jpy', name: 'Ounce (JPY)', symbol: 'oz JPY' },
+      { key: 'oz_cad', name: 'Ounce (CAD)', symbol: 'oz CAD' },
+      { key: 'oz_aud', name: 'Ounce (AUD)', symbol: 'oz AUD' }
+    ],
+    convert: (value, from, to) => {
+      const rates = getCachedGoldRates();
+      
+      // Convert to base unit (USD per ounce)
+      let baseValue;
+      switch (from) {
+        case 'oz_usd': baseValue = value; break;
+        case 'gram_inr': baseValue = (value / rates.inr) * rates.usd * 3.11035; break; // 10g to oz conversion
+        case 'oz_eur': baseValue = (value / rates.eur) * rates.usd; break;
+        case 'oz_gbp': baseValue = (value / rates.gbp) * rates.usd; break;
+        case 'oz_jpy': baseValue = (value / rates.jpy) * rates.usd; break;
+        case 'oz_cad': baseValue = (value / rates.cad) * rates.usd; break;
+        case 'oz_aud': baseValue = (value / rates.aud) * rates.usd; break;
+        default: baseValue = value;
+      }
+      
+      // Convert from base to target
+      switch (to) {
+        case 'oz_usd': return baseValue;
+        case 'gram_inr': return (baseValue / rates.usd) * rates.inr / 3.11035; // oz to 10g conversion
+        case 'oz_eur': return (baseValue / rates.usd) * rates.eur;
+        case 'oz_gbp': return (baseValue / rates.usd) * rates.gbp;
+        case 'oz_jpy': return (baseValue / rates.usd) * rates.jpy;
+        case 'oz_cad': return (baseValue / rates.usd) * rates.cad;
+        case 'oz_aud': return (baseValue / rates.usd) * rates.aud;
+        default: return baseValue;
+      }
+    }
   }
 };
 
-// Initialize currency rates on app load
+// Initialize rates on app load
 fetchExchangeRates();
+fetchGoldRates();

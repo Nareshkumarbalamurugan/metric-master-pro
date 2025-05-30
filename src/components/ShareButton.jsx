@@ -6,23 +6,11 @@ const ShareButton = ({ category, fromUnit, toUnit, value, result }) => {
   const [copied, setCopied] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
 
-  const generateShareUrl = () => {
-    const baseUrl = window.location.origin;
-    const params = new URLSearchParams({
-      category: category.id,
-      from: fromUnit,
-      to: toUnit,
-      value: value
-    });
-    return `${baseUrl}/${category.id}?${params.toString()}`;
-  };
-
   const shareText = `${value} ${fromUnit} = ${result} ${toUnit} | Converted using ConverterPro`;
-  const shareUrl = generateShareUrl();
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+      await navigator.clipboard.writeText(shareText);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -31,19 +19,18 @@ const ShareButton = ({ category, fromUnit, toUnit, value, result }) => {
   };
 
   const shareViaWhatsApp = () => {
-    const text = encodeURIComponent(`${shareText}\n${shareUrl}`);
+    const text = encodeURIComponent(shareText);
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
 
   const shareViaTwitter = () => {
     const text = encodeURIComponent(shareText);
-    const url = encodeURIComponent(shareUrl);
-    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
   };
 
   const shareViaEmail = () => {
     const subject = encodeURIComponent('Unit Conversion Result');
-    const body = encodeURIComponent(`${shareText}\n\nConvert more units at: ${shareUrl}`);
+    const body = encodeURIComponent(`${shareText}\n\nConvert more units at: https://converterpro.online`);
     window.open(`mailto:?subject=${subject}&body=${body}`);
   };
 
@@ -66,7 +53,7 @@ const ShareButton = ({ category, fromUnit, toUnit, value, result }) => {
             className="w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 rounded text-sm"
           >
             {copied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
-            {copied ? 'Copied!' : 'Copy Link'}
+            {copied ? 'Copied!' : 'Copy Result'}
           </button>
           
           <button

@@ -2,6 +2,12 @@
 import React from 'react';
 
 const Footer = () => {
+  const handleConverterClick = (categoryId) => {
+    const event = new CustomEvent('selectCategory', { detail: { id: categoryId } });
+    window.dispatchEvent(event);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-gradient-to-r from-gray-900 to-blue-900 dark:from-gray-800 dark:to-blue-800 text-white py-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4">
@@ -23,11 +29,46 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Popular Converters</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#converters" className="hover:text-white transition-colors">Length Converter</a></li>
-              <li><a href="#converters" className="hover:text-white transition-colors">Weight Converter</a></li>
-              <li><a href="#converters" className="hover:text-white transition-colors">Temperature Converter</a></li>
-              <li><a href="#converters" className="hover:text-white transition-colors">Currency Converter</a></li>
-              <li><a href="#converters" className="hover:text-white transition-colors">Area Converter</a></li>
+              <li>
+                <button 
+                  onClick={() => handleConverterClick('length')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Length Converter
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleConverterClick('weight')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Weight Converter
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleConverterClick('temperature')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Temperature Converter
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleConverterClick('currency')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Currency Converter
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleConverterClick('area')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Area Converter
+                </button>
+              </li>
             </ul>
           </div>
 

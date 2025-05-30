@@ -6,6 +6,31 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState('en');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
+    { code: 'ta', name: 'தமிழ்', flag: '🇮🇳' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵' },
+    { code: 'ar', name: 'العربية', flag: '🇸🇦' }
+  ];
+
+  const searchSuggestions = [
+    { query: 'inch to cm', category: 'length', from: 'in', to: 'cm' },
+    { query: 'kg to lbs', category: 'weight', from: 'kg', to: 'lb' },
+    { query: 'celsius to fahrenheit', category: 'temperature', from: 'c', to: 'f' },
+    { query: 'usd to inr', category: 'currency', from: 'usd', to: 'inr' },
+    { query: 'acre to sqft', category: 'area', from: 'acre', to: 'sqft' },
+    { query: 'meter to feet', category: 'length', from: 'm', to: 'ft' },
+    { query: 'liter to gallon', category: 'volume', from: 'l', to: 'galus' }
+  ];
 
   useEffect(() => {
     const darkMode = localStorage.getItem('darkMode') === 'true';
@@ -13,6 +38,9 @@ const Navbar = () => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
     }
+
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    setCurrentLanguage(savedLanguage);
   }, []);
 
   const toggleDarkMode = () => {
@@ -26,10 +54,27 @@ const Navbar = () => {
     }
   };
 
+  const changeLanguage = (langCode) => {
+    setCurrentLanguage(langCode);
+    localStorage.setItem('language', langCode);
+    setIsLanguageOpen(false);
+    // Here you would implement actual translation logic
+  };
+
+  const handleSearch = (suggestion) => {
+    const event = new CustomEvent('searchConverter', { detail: suggestion });
+    window.dispatchEvent(event);
+    setIsSearchOpen(false);
+    setSearchQuery('');
+  };
+
+  const filteredSuggestions = searchSuggestions.filter(suggestion =>
+    suggestion.query.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const scrollToSection = (sectionId, event) => {
     event.preventDefault();
     if (sectionId === 'converters') {
-      // Scroll to top for converters (category grid)
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const element = document.getElementById(sectionId);
@@ -93,9 +138,32 @@ const Navbar = () => {
             </button>
             
             {/* Language Selector */}
-            <button className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-2 rounded-md transition-colors">
-              <Globe size={20} />
-            </button>
+            <div className="relative">
+              <button 
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-2 rounded-md transition-colors flex items-center gap-1"
+              >
+                <Globe size={20} />
+                <span className="text-sm">{languages.find(l => l.code === currentLanguage)?.flag}</span>
+              </button>
+              
+              {isLanguageOpen && (
+                <div className="absolute top-full right-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 min-w-40 z-50">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 text-sm ${
+                        currentLanguage === lang.code ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400' : ''
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             
             {/* Dark Mode Toggle */}
             <button
@@ -127,12 +195,30 @@ const Navbar = () => {
       {/* Search Bar */}
       {isSearchOpen && (
         <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
-          <input
-            type="text"
-            placeholder="Search converters (e.g., 'inch to cm', 'kg to lbs')"
-            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
-            autoFocus
-          />
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search converters (e.g., 'inch to cm', 'kg to lbs')"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
+              autoFocus
+            />
+            {searchQuery && filteredSuggestions.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50">
+                {filteredSuggestions.map((suggestion, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSearch(suggestion)}
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 first:rounded-t-lg last:rounded-b-lg"
+                  >
+                    <span className="text-blue-600 dark:text-blue-400">{suggestion.query}</span>
+                    <span className="text-gray-500 dark:text-gray-400 ml-2 text-sm">({suggestion.category})</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
