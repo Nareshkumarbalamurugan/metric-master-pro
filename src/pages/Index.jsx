@@ -67,12 +67,20 @@ const Index = () => {
       }
     };
 
+    // Listen for home reset events
+    const handleResetToHome = () => {
+      setSelectedCategory(null);
+      window.history.pushState({}, '', window.location.pathname);
+    };
+
     window.addEventListener('searchConverter', handleSearchConverter);
     window.addEventListener('selectCategory', handleSelectCategory);
+    window.addEventListener('resetToHome', handleResetToHome);
 
     return () => {
       window.removeEventListener('searchConverter', handleSearchConverter);
       window.removeEventListener('selectCategory', handleSelectCategory);
+      window.removeEventListener('resetToHome', handleResetToHome);
     };
   }, []);
 

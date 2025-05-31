@@ -3,22 +3,22 @@
   "name": "ConverterPro - Universal Unit Converter",
   "short_name": "ConverterPro",
   "description": "Convert between 200+ units across 17 categories with real-time currency rates",
-  "start_url": "/metric-master-pro/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#1e3a8a",
   "theme_color": "#2563eb",
   "orientation": "portrait",
-  "scope": "/metric-master-pro/",
+  "scope": "/",
   "lang": "en",
   "icons": [
     {
-      "src": "/metric-master-pro/icon-192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/metric-master-pro/icon-512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -30,15 +30,15 @@
       "name": "Length Converter",
       "short_name": "Length",
       "description": "Convert length units",
-      "url": "/metric-master-pro/?category=length",
-      "icons": [{ "src": "/metric-master-pro/icon-192.png", "sizes": "192x192" }]
+      "url": "/?category=length",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Currency Converter",
       "short_name": "Currency",
       "description": "Convert currencies with real-time rates",
-      "url": "/metric-master-pro/?category=currency",
-      "icons": [{ "src": "/metric-master-pro/icon-192.png", "sizes": "192x192" }]
+      "url": "/?category=currency",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

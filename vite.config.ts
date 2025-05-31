@@ -5,8 +5,8 @@ import path from 'path'
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // Base public path when served in GitHub Pages repo (repo name)
-  base: '/metric-master-pro/',
+  // Remove base path for custom domain
+  base: '/',
   
   server: {
     host: "::",
