@@ -29,8 +29,10 @@
     <meta property="twitter:title" content="ConverterPro - Universal Unit Converter" />
     <meta property="twitter:description" content="Convert between any units instantly with our comprehensive converter. 17+ categories, 200+ units, real-time rates!" />
     <meta property="twitter:image" content="https://converterpro.online/icon-512.png" />
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4837968142917989"
      crossorigin="anonymous"></script>
+    
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -65,9 +67,22 @@
 
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#2563eb" />
-     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Vite injects CSS automatically in production build -->
+    <!-- GitHub Pages SPA Redirect Script -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
 
   <body>
