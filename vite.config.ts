@@ -5,8 +5,8 @@ import path from 'path'
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // Set base path for GitHub Pages with custom domain
-  base: '/',
+  // Base public path when served in GitHub Pages repo (repo name)
+  base: '/metric-master-pro/',
   
   server: {
     host: "::",
@@ -15,20 +15,20 @@ export default defineConfig(({ mode }) => ({
   },
 
   plugins: [
-    react(),
+    react(),  // React plugin with SWC for faster builds
     mode === 'development' && componentTagger(),
   ].filter(Boolean),
 
   resolve: {
     alias: {
+      // Alias "@" to the "./src" folder for cleaner imports
       '@': path.resolve(__dirname, './src'),
     },
   },
 
+  // Optional: build options, can tweak if needed
   build: {
     outDir: 'dist',
     sourcemap: false,
-    // Ensure assets are properly referenced
-    assetsDir: 'assets',
   },
 }))

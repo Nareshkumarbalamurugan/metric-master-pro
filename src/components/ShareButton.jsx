@@ -1,30 +1,12 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { Share2, Copy, Check } from 'lucide-react';
 
 const ShareButton = ({ category, fromUnit, toUnit, value, result }) => {
   const [copied, setCopied] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
-  const menuRef = useRef(null);
 
   const shareText = `${value} ${fromUnit} = ${result} ${toUnit} | Converted using ConverterPro`;
-
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setShowShareMenu(false);
-      }
-    };
-
-    if (showShareMenu) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [showShareMenu]);
 
   const copyToClipboard = async () => {
     try {
@@ -39,26 +21,23 @@ const ShareButton = ({ category, fromUnit, toUnit, value, result }) => {
   const shareViaWhatsApp = () => {
     const text = encodeURIComponent(shareText);
     window.open(`https://wa.me/?text=${text}`, '_blank');
-    setShowShareMenu(false);
   };
 
   const shareViaTwitter = () => {
     const text = encodeURIComponent(shareText);
     window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
-    setShowShareMenu(false);
   };
 
   const shareViaEmail = () => {
     const subject = encodeURIComponent('Unit Conversion Result');
     const body = encodeURIComponent(`${shareText}\n\nConvert more units at: https://converterpro.online`);
     window.open(`mailto:?subject=${subject}&body=${body}`);
-    setShowShareMenu(false);
   };
 
   if (!value || !result) return null;
 
   return (
-    <div className="relative" ref={menuRef}>
+    <div className="relative">
       <button
         onClick={() => setShowShareMenu(!showShareMenu)}
         className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

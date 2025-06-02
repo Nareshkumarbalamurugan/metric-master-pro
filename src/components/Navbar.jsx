@@ -1,12 +1,26 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Calculator, Moon, Sun, Search } from 'lucide-react';
+import { Menu, X, Calculator, Moon, Sun, Search, Globe } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState('en');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
+    { code: 'ta', name: 'தமிழ்', flag: '🇮🇳' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵' },
+    { code: 'ar', name: 'العربية', flag: '🇸🇦' }
+  ];
 
   const searchSuggestions = [
     { query: 'inch to cm', category: 'length', from: 'in', to: 'cm' },
@@ -24,6 +38,9 @@ const Navbar = () => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
     }
+
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    setCurrentLanguage(savedLanguage);
   }, []);
 
   const toggleDarkMode = () => {
@@ -35,6 +52,13 @@ const Navbar = () => {
     } else {
       document.documentElement.classList.remove('dark');
     }
+  };
+
+  const changeLanguage = (langCode) => {
+    setCurrentLanguage(langCode);
+    localStorage.setItem('language', langCode);
+    setIsLanguageOpen(false);
+    // Here you would implement actual translation logic
   };
 
   const handleSearch = (suggestion) => {
@@ -50,10 +74,7 @@ const Navbar = () => {
 
   const scrollToSection = (sectionId, event) => {
     event.preventDefault();
-    if (sectionId === 'home' || sectionId === 'converters') {
-      // Reset to show all converters and scroll to top
-      const resetEvent = new CustomEvent('resetToHome');
-      window.dispatchEvent(resetEvent);
+    if (sectionId === 'converters') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const element = document.getElementById(sectionId);
@@ -115,6 +136,34 @@ const Navbar = () => {
             >
               <Search size={20} />
             </button>
+            
+            {/* Language Selector */}
+            <div className="relative">
+              <button 
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-2 rounded-md transition-colors flex items-center gap-1"
+              >
+                <Globe size={20} />
+                <span className="text-sm">{languages.find(l => l.code === currentLanguage)?.flag}</span>
+              </button>
+              
+              {isLanguageOpen && (
+                <div className="absolute top-full right-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 min-w-40 z-50">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 text-sm ${
+                        currentLanguage === lang.code ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400' : ''
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             
             {/* Dark Mode Toggle */}
             <button
