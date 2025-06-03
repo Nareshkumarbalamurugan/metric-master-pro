@@ -4,9 +4,6 @@ import path from 'path'
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // ✅ Set base to match GitHub Pages URL path
-  base: '/metric-master-pro/',
-
   server: {
     host: "::",
     port: 8080,
