@@ -1,13 +1,12 @@
-
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // Remove base path for custom domain
-  base: '/',
-  
+  // ✅ Set base to match GitHub Pages URL path
+  base: '/metric-master-pro/',
+
   server: {
     host: "::",
     port: 8080,
@@ -15,20 +14,19 @@ export default defineConfig(({ mode }) => ({
   },
 
   plugins: [
-    react(),  // React plugin with SWC for faster builds
+    react(),
     mode === 'development' && componentTagger(),
   ].filter(Boolean),
 
   resolve: {
     alias: {
-      // Alias "@" to the "./src" folder for cleaner imports
       '@': path.resolve(__dirname, './src'),
     },
   },
 
-  // Optional: build options, can tweak if needed
   build: {
     outDir: 'dist',
     sourcemap: false,
+    assetsDir: 'assets',
   },
 }))
