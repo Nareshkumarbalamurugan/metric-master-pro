@@ -12,6 +12,7 @@ if (!existsSync(distDir)) {
 // List of files to copy
 const filesToCopy = [
     'favicon.ico',
+    'favicon.svg',
     'manifest.json',
     'icon-192.png',
     'icon-512.png',
