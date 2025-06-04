@@ -11,11 +11,7 @@ if (!existsSync(distDir)) {
 
 // List of files to copy
 const filesToCopy = [
-    'favicon.ico',
     'manifest.json',
-    'icon-192.png',
-    'icon-512.png',
-    'apple-touch-icon.png',
     'robots.txt',
     'sitemap.xml'
 ];
