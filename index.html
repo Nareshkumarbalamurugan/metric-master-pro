@@ -1,98 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ConverterPro - Universal Unit Converter | Convert Any Unit Instantly</title>
-    
-    <!-- Primary SEO Meta Tags -->
-    <meta name="title" content="ConverterPro - Universal Unit Converter | Convert Any Unit Instantly" />
-    <meta name="description" content="Free online unit converter by BKND Groups. Convert area, length, weight, temperature, time, currency, and more. Includes acre to cent, sqft to sqm, kg to lbs, cm to inches, binary to decimal converters and 200+ units across 17 categories." />
-    <meta name="keywords" content="unit converter online, conversion calculator, area converter, length converter, weight converter, time converter, number system converter, acre to cent converter, sqft to sqm converter, kg to lbs converter, cm to inches converter, binary to decimal converter, fast unit conversion tool, free measurement converter, hectare to acre calculator, currency converter, temperature converter, universal converter online, best unit converter website, land measurement tool, metric to imperial converter, measurement conversion calculator, convert units easily, instant unit calculator" />
-    <meta name="author" content="BKND Groups - Kamalesh Kumar Balamurugan" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <link rel="canonical" href="https://converterpro.online/" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://converterpro.online/" />
-    <meta property="og:title" content="ConverterPro - Universal Unit Converter | Convert Any Unit Instantly" />
-    <meta property="og:description" content="Free online unit converter. Convert between 200+ units across 17 categories with real-time currency rates and instant conversion results." />
-    <meta property="og:image" content="https://converterpro.online/icon-512.png" />
-    <meta property="og:site_name" content="ConverterPro" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://converterpro.online/" />
-    <meta property="twitter:title" content="ConverterPro - Universal Unit Converter" />
-    <meta property="twitter:description" content="Convert between any units instantly with our comprehensive converter. 17+ categories, 200+ units, real-time rates!" />
-    <meta property="twitter:image" content="https://converterpro.online/icon-512.png" />
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4837968142917989"
-     crossorigin="anonymous"></script>
-    
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "ConverterPro",
-      "description": "Universal unit converter supporting 200+ units across 17 categories including area, length, weight, temperature, time, currency conversion with real-time rates",
-      "url": "https://converterpro.online/",
-      "creator": {
-        "@type": "Organization",
-        "name": "BKND Groups",
-        "founder": {
-          "@type": "Person",
-          "name": "Kamalesh Kumar Balamurugan",
-          "email": "kamaleshkumarbalamurugan@gmail.com"
-        }
-      },
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1250"
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="manifest" href="/manifest.json" />
+  <title>ConverterPro - Universal Unit Converter</title>
+
+  <!-- Primary SEO Meta Tags -->
+  <meta name="title" content="ConverterPro - Universal Unit Converter | Convert Any Unit Instantly" />
+  <meta name="description"
+    content="Free online unit converter by BKND Groups. Convert area, length, weight, temperature, time, currency, and more. Includes acre to cent, sqft to sqm, kg to lbs, cm to inches, binary to decimal converters and 200+ units across 17 categories." />
+  <meta name="keywords"
+    content="unit converter online, conversion calculator, area converter, length converter, weight converter, time converter, number system converter, acre to cent converter, sqft to sqm converter, kg to lbs converter, cm to inches converter, binary to decimal converter, fast unit conversion tool, free measurement converter, hectare to acre calculator, currency converter, temperature converter, universal converter online, best unit converter website, land measurement tool, metric to imperial converter, measurement conversion calculator, convert units easily, instant unit calculator" />
+  <meta name="author" content="BKND Groups - Kamalesh Kumar Balamurugan" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <link rel="canonical" href="https://converterpro.online/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://converterpro.online/" />
+  <meta property="og:title" content="ConverterPro - Universal Unit Converter | Convert Any Unit Instantly" />
+  <meta property="og:description"
+    content="Free online unit converter. Convert between 200+ units across 17 categories with real-time currency rates and instant conversion results." />
+  <meta property="og:image" content="https://converterpro.online/icon-512.png" />
+  <meta property="og:site_name" content="ConverterPro" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://converterpro.online/" />
+  <meta property="twitter:title" content="ConverterPro - Universal Unit Converter" />
+  <meta property="twitter:description"
+    content="Convert between any units instantly with our comprehensive converter. 17+ categories, 200+ units, real-time rates!" />
+  <meta property="twitter:image" content="https://converterpro.online/icon-512.png" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- GitHub Pages SPA Redirect Script -->
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
       }
-    }
-    </script>
+    }(window.location))
+  </script>
+  <script type="module" crossorigin src="/assets/js/index-CD6q35So.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/css/index-fQsnZR23.css">
+</head>
 
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#2563eb" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<body>
+  <div id="root"></div>
 
-    <!-- GitHub Pages SPA Redirect Script -->
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
-    <script type="module" crossorigin src="/assets/index-oimSe0In.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-fQsnZR23.css">
-  </head>
+  <!-- AdSense Script -->
+  <script async defer
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4837968142917989"
+    crossorigin="anonymous"></script>
 
-  <body>
-    <div id="root"></div>
+  <!-- GPT Embed (do not remove) -->
+  <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
 
-    <!-- GPT Embed (do not remove) -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  <!-- Vite entry point -->
+</body>
 
-    <!-- Vite entry point -->
-  </body>
 </html>
