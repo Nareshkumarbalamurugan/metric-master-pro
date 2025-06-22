@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '../components/Navbar';
@@ -89,24 +88,11 @@ const Index = () => {
       <Helmet>
         <title>ConverterPro - Universal Unit Converter | Convert Any Unit Instantly</title>
         <meta name="description" content="ConverterPro by BKND Groups - Convert between 200+ units across 18 categories including area, length, weight, temperature, currency, and gold rates. Fast, accurate, and free online converter with real-time exchange rates." />
-        <meta name="keywords" content="unit converter, metric converter, length converter, weight converter, temperature converter, currency converter, gold rates, area converter, volume converter, converterpro" />
-        <meta name="author" content="BKND Groups" />
+        <meta name="keywords" content="unit converter, metric converter, length converter, weight converter, temperature converter, currency converter, gold rates, area converter, volume converter, converterpro, online unit conversion, instant unit calculator, free measurement converter, best unit converter website, universal converter, measurement conversion calculator, convert units easily, real-time currency converter, digital storage converter, speed converter, pressure converter, power converter, density converter, fuel consumption converter, data transfer converter, angle converter, height converter, scientific calculator, engineering tools, educational tools, mobile-friendly converter, fast conversion tool, accurate unit conversion, live exchange rates, currency rates online, land measurement tool, metric to imperial converter, imperial to metric, conversion formulas, conversion chart, online calculator, conversion app, web converter, professional converter, student tools, business calculator, international units, SI units, US customary units, UK imperial units, conversion for students, conversion for engineers, conversion for teachers, conversion for professionals, free online converter, no registration converter, privacy safe converter, dark mode converter, responsive converter, modern converter, 2025 unit converter, updated unit converter, latest conversion tool, best free converter, top conversion website, easy unit conversion, quick unit converter, all-in-one converter, multi-category converter, comprehensive converter, advanced unit converter, user-friendly converter, converter for all, converter for everyone, converter for business, converter for education, converter for science, converter for travel, converter for shopping, converter for cooking, converter for construction, converter for real estate, converter for finance, converter for academics, converter for research, converter for daily use, converter for global users, converter for mobile, converter for desktop, converter for tablet, converter for web, converter for Chrome, converter for Edge, converter for Firefox, converter for Safari, converter for Opera, converter for Windows, converter for Mac, converter for Linux, converter for Android, converter for iOS, converter for iPhone, converter for iPad, converter for Chromebook, converter for smart devices, converter for IoT, converter for smart home, converter for smart office, converter for smart school, converter for smart city, converter for smart world, converter for future, converter for now, converter for tomorrow, converter for everyone, converter for you" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://converterpro.online/" />
         
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="ConverterPro - Universal Unit Converter" />
-        <meta property="og:description" content="Convert between 200+ units across 18 categories. Fast, accurate, and completely free online unit converter with real-time currency and gold rates." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://converterpro.online" />
-        <meta property="og:site_name" content="ConverterPro" />
-        
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="ConverterPro - Universal Unit Converter" />
-        <meta name="twitter:description" content="Convert between 200+ units across 18 categories instantly" />
-
-        {/* Structured Data for SEO */}
+        {/* Structured Data for SEO (hidden from users) */}
         <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -133,6 +119,7 @@ const Index = () => {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 transition-colors duration-300">
         <Navbar />
         <Hero />
+        {/* Removed repeated SEO headings/links. Only show main UI below. */}
         {!selectedCategory ? (
           <CategoryGrid categories={categories} onCategorySelect={setSelectedCategory} />
         ) : (
